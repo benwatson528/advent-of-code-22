@@ -1,2 +1,2 @@
 def solve(elves):
-    return sorted(map(lambda l: sum(l), elves), reverse=True)
+    return sorted(map(sum, elves), reverse=True)
