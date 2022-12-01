@@ -1,2 +1,2 @@
-def solve(elves):
-    return sorted(map(sum, elves), reverse=True)
+def solve(elves, n):
+    return sum(sorted(map(sum, elves), reverse=True)[:n])

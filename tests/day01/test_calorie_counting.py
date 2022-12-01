@@ -5,19 +5,19 @@ from main.day01.calorie_counting import solve
 
 
 def test_biggest_elf_simple():
-    assert solve(read_input("data/test_input.txt"))[0] == 24000
+    assert solve(read_input("data/test_input.txt"), 1) == 24000
 
 
 def test_part_1_real():
-    assert solve(read_input("data/input.txt"))[0] == 68787
+    assert solve(read_input("data/input.txt"), 1) == 68787
 
 
 def test_part_1_simple():
-    assert sum(solve(read_input("data/test_input.txt"))[:3]) == 45000
+    assert solve(read_input("data/test_input.txt"), 3) == 45000
 
 
 def test_part_2_real():
-    assert sum(solve(read_input("data/input.txt"))[:3]) == 198041
+    assert solve(read_input("data/input.txt"), 3) == 198041
 
 
 def read_input(file_name):
