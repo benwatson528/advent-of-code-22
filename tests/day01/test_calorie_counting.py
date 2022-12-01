@@ -13,11 +13,11 @@ def test_part_1_real():
 
 
 def test_part_1_simple():
-    assert sum(solve(read_input("data/test_input.txt"))[0:3]) == 45000
+    assert sum(solve(read_input("data/test_input.txt"))[:3]) == 45000
 
 
 def test_part_2_real():
-    assert sum(solve(read_input("data/input.txt"))[0:3]) == 198041
+    assert sum(solve(read_input("data/input.txt"))[:3]) == 198041
 
 
 def read_input(file_name):
