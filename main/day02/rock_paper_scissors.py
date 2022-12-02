@@ -1,8 +1,3 @@
-LOSERS = {'A': 'Z', 'B': 'X', 'C': 'Y'}
-WINNERS = {'A': 'Y', 'B': 'Z', 'C': 'X'}
-DRAWERS = {'A': 'X', 'B': 'Y', 'C': 'Z'}
-
-
 def solve_move(moves) -> int:
     return sum(map(score, moves))
 
@@ -14,20 +9,20 @@ def solve_outcome(moves) -> int:
 
 def find_move(move):
     opponent, outcome = move
-    if outcome == 'X':
-        return opponent, LOSERS[opponent]
-    elif outcome == 'Y':
-        return opponent, DRAWERS[opponent]
+    if outcome == 0:
+        return opponent, (opponent + 2) % 3
+    elif outcome == 1:
+        return opponent, opponent
     else:
-        return opponent, WINNERS[opponent]
+        return opponent, (opponent + 1) % 3
 
 
 def score(move):
     opponent, player = move
-    shape_score = ord(player) - 87
-    if LOSERS[opponent] == player:
-        return shape_score
-    elif DRAWERS[opponent] == player:
-        return 3 + shape_score
+    base_score = player + 1
+    if opponent == player:
+        return 3 + base_score
+    elif (opponent + 1) % 3 == player:
+        return 6 + base_score
     else:
-        return 6 + shape_score
+        return base_score

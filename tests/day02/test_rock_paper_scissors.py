@@ -25,5 +25,5 @@ def read_input(file_name):
         lines = []
         for line in f:
             stripped = line.strip('\n')
-            lines.append((stripped[0], stripped[2]))
+            lines.append((ord(stripped[0]) - 65, ord(stripped[2]) - 88))
         return lines
