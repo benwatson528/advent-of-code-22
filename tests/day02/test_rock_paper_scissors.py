@@ -17,7 +17,7 @@ def test_part_2_simple():
 
 
 def test_part_2_real():
-    assert solve_outcome(read_input("data/input.txt")) == 11767
+    assert solve_outcome(read_input("data/input.txt")) == 13886
 
 
 def read_input(file_name):
