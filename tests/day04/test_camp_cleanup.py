@@ -23,7 +23,4 @@ def test_any_overlap_real():
 
 def read_input(file_name):
     with open(os.path.join(Path(__file__).parent.absolute(), file_name)) as f:
-        lines = []
-        for line in f:
-            lines.append(list(int(x) for x in re.findall(r'\d+', line)))
-        return lines
+        return [list(int(x) for x in re.findall(r'\d+', line)) for line in f.readlines()]
