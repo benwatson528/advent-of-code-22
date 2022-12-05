@@ -1,20 +1,13 @@
-def solve(stacks, instructions, move_separately) -> str:
+def solve(stacks, instructions, move_together) -> str:
     for instruction in instructions:
-        if move_separately:
-            move_crates_separately(instruction, stacks)
-        else:
-            move_crates_together(instruction, stacks)
+        move_crates(instruction, stacks, move_together)
     return ''.join(stacks[s].pop() for s in stacks)
 
 
-def move_crates_separately(instruction, stacks):
-    for _ in range(instruction.num_to_move):
-        crate = stacks[instruction.move_from].pop()
-        stacks[instruction.move_to].append(crate)
-
-
-def move_crates_together(instruction, stacks):
+def move_crates(instruction, stacks, move_together):
     crates = []
     for _ in range(instruction.num_to_move):
         crates.append(stacks[instruction.move_from].pop())
-    stacks[instruction.move_to].extend(reversed(crates))
+    if move_together:
+        crates.reverse()
+    stacks[instruction.move_to].extend(crates)

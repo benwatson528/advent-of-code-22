@@ -9,22 +9,22 @@ from main.day05.supply_stacks import solve
 
 def test_separately_simple():
     stacks, instructions = read_input("data/test_input.txt")
-    assert solve(stacks, instructions, move_separately=True) == "CMZ"
+    assert solve(stacks, instructions, move_together=False) == "CMZ"
 
 
 def test_separately_real():
     stacks, instructions = read_input("data/input.txt")
-    assert solve(stacks, instructions, move_separately=True) == "SHMSDGZVC"
+    assert solve(stacks, instructions, move_together=False) == "SHMSDGZVC"
 
 
 def test_together_simple():
     stacks, instructions = read_input("data/test_input.txt")
-    assert solve(stacks, instructions, move_separately=False) == "MCD"
+    assert solve(stacks, instructions, move_together=True) == "MCD"
 
 
 def test_together_real():
     stacks, instructions = read_input("data/input.txt")
-    assert solve(stacks, instructions, move_separately=False) == "SHMSDGZVC"
+    assert solve(stacks, instructions, move_together=True) == "VRZGHDFBQ"
 
 
 def read_input(file_name):
