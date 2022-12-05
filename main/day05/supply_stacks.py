@@ -1,6 +1,5 @@
 def solve(stacks, instructions, move_together) -> str:
-    for instruction in instructions:
-        move_crates(instruction, stacks, move_together)
+    [move_crates(inst, stacks, move_together) for inst in instructions]
     return ''.join(stacks[s].pop() for s in stacks)
 
 
