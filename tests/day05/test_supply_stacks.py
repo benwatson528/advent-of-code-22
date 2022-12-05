@@ -31,30 +31,20 @@ def read_input(file_name):
     with open(os.path.join(Path(__file__).parent.absolute(), file_name)) as f:
         raw_stacks = []
         for line in f:
-            if line.lstrip()[0].isdigit():
-                cols = find_col_positions(line)
+            if line == '\n':
                 break
             raw_stacks.append(line.strip('\n'))
-        f.readline()
-        stacks = process_stacks(reversed(raw_stacks), cols)
+        stacks = process_stacks(raw_stacks)
         instructions = [
             Instruction(list(int(x) for x in re.findall(r'\d+', line)))
             for line in f]
         return stacks, instructions
 
 
-def process_stacks(raw_stacks, cols):
+def process_stacks(raw_stacks):
     stacks = defaultdict(list)
-    for raw_stack in raw_stacks:
-        for i in range(len(raw_stack)):
-            if raw_stack[i].isalpha():
-                stacks[cols[i]].append(raw_stack[i])
+    rotated = zip(*raw_stacks[::-1])
+    for row in rotated:
+        if row[0].isdigit():
+            stacks[int(row[0])].extend(s for s in row[1:] if s.isalpha())
     return stacks
-
-
-def find_col_positions(line):
-    cols = {}
-    for i, c in enumerate(line):
-        if line[i].isdigit():
-            cols[i] = int(c)
-    return cols
