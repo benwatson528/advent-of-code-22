@@ -7,14 +7,24 @@ from day05.Instruction import Instruction
 from main.day05.supply_stacks import solve
 
 
-def test_simple():
+def test_separately_simple():
     stacks, instructions = read_input("data/test_input.txt")
-    assert solve(stacks, instructions) == "CMZ"
+    assert solve(stacks, instructions, move_separately=True) == "CMZ"
 
 
-def test_real():
+def test_separately_real():
     stacks, instructions = read_input("data/input.txt")
-    assert solve(stacks, instructions) == "SHMSDGZVC"
+    assert solve(stacks, instructions, move_separately=True) == "SHMSDGZVC"
+
+
+def test_together_simple():
+    stacks, instructions = read_input("data/test_input.txt")
+    assert solve(stacks, instructions, move_separately=False) == "MCD"
+
+
+def test_together_real():
+    stacks, instructions = read_input("data/input.txt")
+    assert solve(stacks, instructions, move_separately=False) == "SHMSDGZVC"
 
 
 def read_input(file_name):
