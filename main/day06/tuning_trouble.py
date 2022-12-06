@@ -1,7 +1,7 @@
-def solve(s) -> int:
-    windows = zip(s, s[1:], s[2:], s[3:])
-    deduped = [set(list(s)) for s in windows]
-    for i, e in enumerate(deduped):
-        if len(e) == 4:
-            return i + 4
+def solve(s, num_unique) -> int:
+    for i in range(len(s) - num_unique):
+        deduped = set(list(s[i: i+num_unique]))
+        if len(deduped) == num_unique:
+            return i + num_unique
+
     return -1
