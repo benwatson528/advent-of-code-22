@@ -4,6 +4,11 @@ def solve_visible(trees) -> int:
         for x, t in enumerate(trees[y]):
             if is_outer(x, y, trees) or look_around_visible(x, y, t, trees):
                 num_visible += 1
+<<<<<<< Updated upstream
+=======
+            else:
+                num_visible += look_around(x, y, t, trees)
+>>>>>>> Stashed changes
     return num_visible
 
 
@@ -24,7 +29,7 @@ def look_around_visible(x, y, current_tree, trees):
         return True
 
     taller_seen_right = False
-    for i in range(x+1, len(trees[y])):
+    for i in range(x + 1, len(trees[y])):
         if current_tree <= trees[y][i]:
             taller_seen_right = True
     if not taller_seen_right:
@@ -38,7 +43,7 @@ def look_around_visible(x, y, current_tree, trees):
         return True
 
     taller_seen_down = False
-    for j in range(y+1, len(trees)):
+    for j in range(y + 1, len(trees)):
         if current_tree <= trees[j][x]:
             taller_seen_down = True
     if not taller_seen_down:
