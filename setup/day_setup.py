@@ -23,7 +23,7 @@ def get_puzzle_name(puzzle_url):
             entirePage = f.read().decode("utf-8")
             raw_puzzle_name = re.search("--- (.*) ---", entirePage).group(1).split(": ")[1]
             parsed_puzzle_name = "a_" + raw_puzzle_name if raw_puzzle_name[0].isnumeric() else raw_puzzle_name
-            return parsed_puzzle_name.lower().replace(" ", "_")
+            return parsed_puzzle_name.lower().replace(" ", "_").replace("-", "_")
     except URLError as e:
         sys.exit(f"Could not get puzzle at {puzzle_url}: {e.reason}")
 
