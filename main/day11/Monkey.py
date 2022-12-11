@@ -19,3 +19,6 @@ class Monkey:
         self.test_condition = int(d["Test"].split(" by ")[1])
         self.monkey_if_true = int(d["If true"].split(" monkey ")[1])
         self.monkey_if_false = int(d["If false"].split(" monkey ")[1])
+
+    def __str__(self):
+        return f"Monkey {self.m_id} is holding {self.held_items}. (inspected {self.num_inspected} items)"

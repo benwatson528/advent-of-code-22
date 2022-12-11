@@ -3,7 +3,7 @@ import re
 from pathlib import Path
 from collections import defaultdict
 
-from day05.Instruction import Instruction
+from main.day05.Instruction import Instruction
 from main.day05.supply_stacks import solve
 
 

@@ -1,4 +1,4 @@
-from day07.Dir import Dir
+from main.day07.Dir import Dir
 
 
 def solve_smallest(commands) -> int:

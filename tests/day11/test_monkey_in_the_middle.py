@@ -1,16 +1,27 @@
 import os
 from pathlib import Path
 
-from day11.Monkey import Monkey
+import pytest
+
+from main.day11.Monkey import Monkey
 from main.day11.monkey_in_the_middle import solve
 
 
-def test_simple():
-    assert solve(read_input("data/test_input.txt"), num_rounds=20) == 10605
+def test_p1_simple():
+    assert solve(read_input("data/test_input.txt"), num_rounds=20, divisor=3) == 10605
 
 
-def test_real():
-    assert solve(read_input("data/input.txt"), num_rounds=20) == 55216
+def test_p1_real():
+    assert solve(read_input("data/input.txt"), num_rounds=20, divisor=3) == 55216
+
+
+def test_p2_simple():
+    assert solve(read_input("data/test_input.txt"), num_rounds=10000, divisor=1) == 2713310158
+
+
+@pytest.mark.skip(reason="Takes 5 seconds to run, skipping for speed")
+def test_p2_real():
+    assert solve(read_input("data/input.txt"), num_rounds=10000, divisor=1) == 12848882750
 
 
 def read_input(file_name):
