@@ -1,3 +1,4 @@
+import sys
 from collections import deque
 
 
@@ -6,7 +7,7 @@ def solve_from_start(grid, start, end) -> int:
 
 
 def solve_from_a(grid, end) -> int:
-    shortest_path = 999999
+    shortest_path = sys.maxsize
     for i in range(len(grid)):
         for j in range(len(grid[i])):
             if grid[i][j] in ('a', 'S'):
