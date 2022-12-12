@@ -1,8 +1,19 @@
 from collections import deque
 
 
-def solve(grid, start, end) -> int:
+def solve_from_start(grid, start, end) -> int:
     return bfs(grid, start, end)
+
+
+def solve_from_a(grid, end) -> int:
+    shortest_path = 999999
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            if grid[i][j] in ('a', 'S'):
+                steps = bfs(grid, (i, j), end)
+                if steps:
+                    shortest_path = min(steps, shortest_path)
+    return shortest_path
 
 
 def bfs(grid, start, end):

@@ -19,7 +19,6 @@ def test_p2_simple():
     assert solve(read_input("data/test_input.txt"), num_rounds=10000, divisor=1) == 2713310158
 
 
-@pytest.mark.skip(reason="Takes 5 seconds to run, skipping for speed")
 def test_p2_real():
     assert solve(read_input("data/input.txt"), num_rounds=10000, divisor=1) == 12848882750
 

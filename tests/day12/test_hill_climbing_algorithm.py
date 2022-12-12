@@ -1,17 +1,27 @@
 import os
 from pathlib import Path
 
-from main.day12.hill_climbing_algorithm import solve
+from main.day12.hill_climbing_algorithm import solve_from_start, solve_from_a
 
 
-def test_simple():
+def test_from_start_simple():
     grid, start, end = read_input("data/test_input.txt")
-    assert solve(grid, start, end) == 31
+    assert solve_from_start(grid, start, end) == 31
 
 
-def test_real():
+def test_from_start_real():
     grid, start, end = read_input("data/input.txt")
-    assert solve(grid, start, end) == 497
+    assert solve_from_start(grid, start, end) == 497
+
+
+def test_from_a_simple():
+    grid, _, end = read_input("data/test_input.txt")
+    assert solve_from_a(grid, end) == 29
+
+
+def test_from_a_real():
+    grid, _, end = read_input("data/input.txt")
+    assert solve_from_a(grid, end) == 492
 
 
 def read_input(file_name):
