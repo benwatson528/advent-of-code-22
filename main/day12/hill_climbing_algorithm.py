@@ -12,8 +12,7 @@ def solve_from_a(grid, end) -> int:
         for j in range(len(grid[i])):
             if grid[i][j] in ('a', 'S'):
                 steps = bfs(grid, (i, j), end)
-                if steps:
-                    shortest_path = min(steps, shortest_path)
+                shortest_path = min(steps or sys.maxsize, shortest_path)
     return shortest_path
 
 
@@ -28,11 +27,10 @@ def bfs(grid, start, end):
                           (current[0] - 1, current[1]),
                           (current[0], current[1] + 1),
                           (current[0], current[1] - 1)]:
-            if not is_valid_move(grid, current, neighbour, end) \
-                    or neighbour in distances:
-                continue
-            distances[neighbour] = distances[current] + 1
-            to_visit.append(neighbour)
+            if is_valid_move(grid, current, neighbour, end) \
+                    and neighbour not in distances:
+                distances[neighbour] = distances[current] + 1
+                to_visit.append(neighbour)
 
 
 def is_valid_move(grid, current, neighbour, end):
