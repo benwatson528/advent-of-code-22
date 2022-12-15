@@ -2,7 +2,9 @@ import os
 import re
 from pathlib import Path
 
-from main.day15.beacon_exclusion_zone import solve
+import pytest
+
+from main.day15.beacon_exclusion_zone import solve, solve_p2
 
 
 def test_occupied_simple():
@@ -13,14 +15,9 @@ def test_occupied_real():
     assert solve(read_input("data/input.txt"), 2000000) == 4424278
 
 
-# 
-# 
-# def test_free_simple():
-#     assert solve_p2(read_input("data/test_input.txt"), 20) == 56000011
-# 
-# 
-# def test_free_real():
-#     assert solve_p2(read_input("data/input.txt"), 4000000) == 4424278
+@pytest.mark.skip(reason="Takes over a minute to run")
+def test_free_real():
+    assert solve_p2(read_input("data/input.txt"), 4000000) == 10382630753392
 
 
 def read_input(file_name):
