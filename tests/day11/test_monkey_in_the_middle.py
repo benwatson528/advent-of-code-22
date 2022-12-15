@@ -1,8 +1,6 @@
 import os
 from pathlib import Path
 
-import pytest
-
 from main.day11.Monkey import Monkey
 from main.day11.monkey_in_the_middle import solve
 
