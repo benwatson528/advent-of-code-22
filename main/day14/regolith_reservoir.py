@@ -5,7 +5,6 @@ def solve(raw_lines, spout=(500, 0), floor_depth=None) -> int:
         lowest_clay += floor_depth
         clay.update(add_floor(lowest_clay))
     sand = drop_sand(clay, set(), spout, lowest_clay)
-    # print_grid(clay, sand, spout)
     return len(sand)
 
 
@@ -55,20 +54,3 @@ def place_clay(raw_lines):
             clay.update([(i, y1) for i in range(min(x1, x2), max(x1, x2) + 1)])
             clay.update([(x1, j) for j in range(min(y1, y2), max(y1, y2) + 1)])
     return clay
-
-
-def print_grid(clay, sand, spout):
-    print()
-    min_grid = (min(x for (x, y) in clay), 0)
-    max_grid = (max(x for (x, y) in clay), max(y for (x, y) in clay))
-    for j in range(min_grid[1], max_grid[1] + 2):
-        print()
-        for i in range(min_grid[0] - 1, max_grid[0] + 2):
-            if (i, j) in clay:
-                print('#', end='')
-            elif (i, j) == spout:
-                print('+', end='')
-            elif (i, j) in sand:
-                print('o', end='')
-            else:
-                print('.', end='')

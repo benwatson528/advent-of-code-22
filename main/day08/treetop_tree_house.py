@@ -49,8 +49,6 @@ def look_around_visible(x, y, current_tree, trees):
 
 
 def look_around_scenic(x, y, current_tree, trees):
-    if x == 2 and y == 3:
-        print()
     num_seen_left = 0
     for i in range(x-1, -1, -1):
         if current_tree > trees[y][i]:
