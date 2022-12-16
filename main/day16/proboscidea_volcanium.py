@@ -8,8 +8,7 @@ def solve(invalves, num_turns) -> int:
     global valves
     valves = invalves
     global positive_flow_rates
-    positive_flow_rates = set(
-        valve.id for valve in valves.values() if valve.flow_rate != 0)
+    positive_flow_rates = set(v.id for v in valves.values() if v.flow_rate != 0)
     return traverse(valves["AA"], num_turns, 0, frozenset(), 0)
 
 
