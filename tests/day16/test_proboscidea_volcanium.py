@@ -17,12 +17,12 @@ def test_p1_real():
     assert solve(read_input("data/input.txt"), 30) == 1767
 
 
-def test_p2_simple():
-    assert solve_elephant(read_input("data/test_input.txt"), 26) == 1707
-
-
-def test_p2_real():
-    assert solve_elephant(read_input("data/input.txt"), 26) == -1
+# Part 2 solution:
+#  1. Run part 1 over 26 turns, find the 1-person score.
+#  2. Use debugger to find the open valves at the max score (1311).
+#  3. Add those nodes into positive_flow_rates so they're not ignored.
+#  4. Run again, adding the 1-person score to the answer.
+#  Answer: 2528
 
 
 def read_input(file_name):
