@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 from main.day16.Valve import Valve
-from main.day16.proboscidea_volcanium import solve, solve_elephant
+from main.day16.proboscidea_volcanium import solve
 
 
 def test_p1_simple():
