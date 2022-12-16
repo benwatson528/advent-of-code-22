@@ -18,7 +18,7 @@ def traverse(current, num_turns, current_turn, open_valves, flow_rate):
         return flow_rate
     max_flow_rate = 0
     if current.id in positive_flow_rates and current.id not in open_valves:
-        # stay where you are and open the valve, costing one move. Don't count the new valve yet
+        # Stay where you are and open the valve, costing one move. Don't count the new valve yet
         max_flow_rate = max(
             traverse(current, num_turns, current_turn + 1, open_valves.union((current.id,)),
                      calc_flow_rate(open_valves, flow_rate)), max_flow_rate)

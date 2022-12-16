@@ -2,6 +2,8 @@ import os
 import re
 from pathlib import Path
 
+import pytest
+
 from main.day16.Valve import Valve
 from main.day16.proboscidea_volcanium import solve
 
@@ -10,8 +12,9 @@ def test_simple():
     assert solve(read_input("data/test_input.txt"), 30) == 1651
 
 
+@pytest.mark.skip(reason="Takes 3.5 minutes to run")
 def test_real():
-    assert solve(read_input("data/input.txt"), 30) == 0
+    assert solve(read_input("data/input.txt"), 30) == 1767
 
 
 def read_input(file_name):
