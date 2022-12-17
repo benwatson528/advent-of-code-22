@@ -3,6 +3,9 @@ def solve(jet_pattern, shapes, num_turns) -> int:
     jet_idx = 0
     for i in range(num_turns):
         jet_idx = drop_block(occupied, shapes[i % len(shapes)], jet_pattern, jet_idx)
+        max_occupied_y = max(y for (x, y) in occupied)
+        if i % 30 == 1:
+            occupied = set((x, y) for (x, y) in occupied if y > max_occupied_y - 30)
     return max(y for (x, y) in occupied) + 1
 
 
@@ -44,20 +47,3 @@ def update_block_position(block, modifier):
     for cell in block:
         block_position.add((cell[0] + modifier[0], cell[1] + modifier[1]))
     return block_position
-
-
-def print_grid(occupied, block):
-    print()
-    min_cell, max_cell = min(0, min(y for (x, y) in occupied.union(block))), max(
-        y for (x, y) in occupied.union(block)) + 1
-    for j in reversed(range(min_cell, max_cell + 1)):
-        print("|", end="")
-        for i in range(7):
-            if (i, j) in occupied:
-                print("#", end="")
-            elif (i, j) in block:
-                print("@", end="")
-            else:
-                print(".", end="")
-        print("|")
-    print("+-------+")
