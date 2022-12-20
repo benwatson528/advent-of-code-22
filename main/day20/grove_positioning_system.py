@@ -1,18 +1,20 @@
-def solve(original_list):
-    print()
+def solve(original_list, decryption_key=1, number_of_mixes=1):
+    len_list = len(original_list)
     dll = create_linked_list(original_list)
-    for i in range(len(original_list)):
-        node = find_node_by_idx(dll.head, i)
-        if node.numeric_value != 0:
-            DoublyLinkedList.move(node, node.numeric_value)
-    return score(find_node_by_val(dll.head, 0))
+    for _ in range(number_of_mixes):
+        for i in range(len(original_list)):
+            node = find_node_by_idx(dll.head, i)
+            if node.numeric_value != 0:
+                val = (decryption_key * node.numeric_value) % (len_list - 1)
+                DoublyLinkedList.move(node, val)
+    return score(find_node_by_val(dll.head, 0), decryption_key)
 
 
-def score(node):
+def score(node, decryption_key):
     ans = 0
     for i in range(3001):
         if i % 1000 == 0:
-            ans += node.numeric_value
+            ans += (node.numeric_value * decryption_key)
         node = node.next
     return ans
 
@@ -74,12 +76,8 @@ class DoublyLinkedList:
         node.prev.next = node.next
 
         ptr = nxt
-        if num_steps > 0:
-            for _ in range(num_steps - 1):
-                ptr = ptr.next
-        elif num_steps < 0:
-            for _ in range(-num_steps + 1):
-                ptr = ptr.prev
+        for _ in range(num_steps - 1):
+            ptr = ptr.next
 
         new_next = ptr.next
         ptr.next.prev = node
