@@ -5,11 +5,11 @@ from main.day20.grove_positioning_system import solve
 
 
 def test_simple():
-    assert solve(read_input("data/test_input.txt")) == 4
+    assert solve(read_input("data/test_input.txt")) == 3
 
 
 def test_real():
-    assert solve(read_input("data/input.txt")) == 0
+    assert solve(read_input("data/input.txt")) == 4914
 
 
 def read_input(file_name):

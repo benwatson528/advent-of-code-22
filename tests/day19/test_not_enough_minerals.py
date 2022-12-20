@@ -7,13 +7,12 @@ import pytest
 from main.day19.not_enough_minerals import solve
 
 
-@pytest.mark.skip(reason="Very slow")
 def test_simple():
     assert solve(read_input("data/test_input.txt"), 24) == 33
 
 
-# def test_real():
-#     assert solve(read_input("data/input.txt"), 24) == 0  # 1710 too high
+def test_real():
+    assert solve(read_input("data/input.txt"), 24) == 0  # 1710 too high
 
 
 def read_input(file_name):
