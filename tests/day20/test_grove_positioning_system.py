@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+import pytest
+
 from main.day20.grove_positioning_system import solve
 
 
@@ -16,8 +18,13 @@ def test_decryption_simple():
     assert solve(read_input("data/test_input.txt"), 811589153, 10) == 1623178306
 
 
-# def test_decryption_real():
-#     assert solve(read_input("data/input.txt"), 811589153, 10) == 3327515527300  # 3327515527300  # too low
+def test_decryption_small_test_input():
+    assert solve(read_input("data/small_test_input.txt"), 811589153, 10) == 6492713224
+
+
+@pytest.mark.skip(reason="Takes 15s to run")
+def test_decryption_real():
+    assert solve(read_input("data/input.txt"), 811589153, 10) == 7973051839072  # 3327515527300  # too low
 
 
 def read_input(file_name):
