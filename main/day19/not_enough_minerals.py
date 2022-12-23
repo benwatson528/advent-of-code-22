@@ -6,7 +6,6 @@ NUM_MINUTES = 0
 
 
 def solve(blueprints, num_minutes) -> int:
-    print()
     robots = (1, 0, 0, 0)
     elements = (0, 0, 0, 0)
     output_geodes = []

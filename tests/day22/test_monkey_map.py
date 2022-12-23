@@ -14,14 +14,9 @@ def test_flat_real():
     assert solve(grid, instructions, False) == 76332
 
 
-def test_cube_simple():
-    grid, instructions = read_input("data/test_input.txt")
-    assert solve(grid, instructions, True) == 5031
-
-
 def test_cube_real():
     grid, instructions = read_input("data/input.txt")
-    assert solve(grid, instructions, True) == -1
+    assert solve(grid, instructions, True) == 144012
 
 
 def read_input(file_name):

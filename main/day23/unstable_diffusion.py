@@ -6,7 +6,6 @@ MOVEMENTS = {"N": (-1, 0), "NE": (-1, 1), "E": (0, 1), "SE": (1, 1), "S": (1, 0)
 
 
 def solve(elves, num_turns, stop_on_same=False) -> int:
-    print()
     first_direction_idx = 0
     prev_elves = elves.copy()
     for i in range(num_turns):
