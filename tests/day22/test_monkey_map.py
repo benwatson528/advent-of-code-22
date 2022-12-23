@@ -6,22 +6,23 @@ from main.day22.monkey_map import solve
 
 def test_flat_simple():
     grid, instructions = read_input("data/test_input.txt")
-    assert solve(grid, instructions) == 6032
+    assert solve(grid, instructions, False) == 6032
 
 
 def test_flat_real():
     grid, instructions = read_input("data/input.txt")
-    assert solve(grid, instructions) == 76332
+    assert solve(grid, instructions, False) == 76332
 
 
 def test_cube_simple():
     grid, instructions = read_input("data/test_input.txt")
-    assert solve(grid, instructions) == 5031
+    assert solve(grid, instructions, True) == 5031
 
 
 def test_cube_real():
     grid, instructions = read_input("data/input.txt")
-    assert solve(grid, instructions) == -1
+    assert solve(grid, instructions, True) == -1
+
 
 def read_input(file_name):
     with open(os.path.join(Path(__file__).parent.absolute(), file_name)) as f:
