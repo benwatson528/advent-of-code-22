@@ -10,12 +10,12 @@ def solve(elves, num_turns, stop_on_same=False) -> int:
     first_direction_idx = 0
     prev_elves = elves.copy()
     for i in range(num_turns):
-        new_elves = take_turn(prev_elves, first_direction_idx)
-        if stop_on_same and new_elves == prev_elves:
+        elves = take_turn(prev_elves, first_direction_idx)
+        if stop_on_same and elves == prev_elves:
             return i + 1
-        prev_elves = new_elves
+        prev_elves = elves
         first_direction_idx = (first_direction_idx + 1) % len(DIRECTIONS)
-    return score(new_elves)
+    return score(elves)
 
 
 def take_turn(elves, first_direction_idx):
@@ -50,8 +50,6 @@ def remove_clashes(proposals):
 
 
 def propose_move(elves_nearby, current_position, start_direction_idx):
-    if current_position == (2, 2):
-        print()
     for dirs_to_check in DIRECTIONS[start_direction_idx:] + DIRECTIONS[:start_direction_idx]:
         if valid_move(dirs_to_check, elves_nearby):
             movement_r, movement_c = MOVEMENTS[dirs_to_check[3]]
