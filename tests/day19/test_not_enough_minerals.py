@@ -7,15 +7,18 @@ import pytest
 from main.day19.not_enough_minerals import solve
 
 
-@pytest.mark.skip(reason="Not working")
 def test_simple():
     assert solve(read_input("data/test_input.txt"), 24) == 33
 
 
-@pytest.mark.skip(reason="Not working")
-def test_real():
-    assert solve(read_input("data/input.txt"), 24) == 0
-    # 1710 too high 1534 too low
+@pytest.mark.skip(reason="Takes 2 minutes to run")
+def test_24_turns_real():
+    assert solve(read_input("data/input.txt"), 24) == 1681
+
+
+@pytest.mark.skip(reason="Takes 3 minutes to run")
+def test_32_turns_real():
+    assert solve(read_input("data/input.txt"), 32) == 5394  # only take the first 3 Blueprints
 
 
 def read_input(file_name):
