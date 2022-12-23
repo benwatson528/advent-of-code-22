@@ -5,17 +5,22 @@ MOVEMENTS = {"N": (-1, 0), "NE": (-1, 1), "E": (0, 1), "SE": (1, 1), "S": (1, 0)
              "NW": (-1, -1)}
 
 
-def solve(elves, num_turns) -> int:
+def solve(elves, num_turns, stop_on_same=False) -> int:
     print()
     first_direction_idx = 0
-    for _ in range(num_turns):
-        elves = take_turn(elves, first_direction_idx)
+    prev_elves = elves.copy()
+    for i in range(num_turns):
+        new_elves = take_turn(prev_elves, first_direction_idx)
+        if stop_on_same and new_elves == prev_elves:
+            return i + 1
+        prev_elves = new_elves
         first_direction_idx = (first_direction_idx + 1) % len(DIRECTIONS)
-    return score(elves)
+    return score(new_elves)
 
 
 def take_turn(elves, first_direction_idx):
     proposals = {}
+    new_elves = elves.copy()
     for elf in elves:
         elves_nearby = find_elves_nearby(elf, elves)
         if not elves_nearby:
@@ -25,9 +30,9 @@ def take_turn(elves, first_direction_idx):
                 proposals[elf] = proposed_moved
     valid_proposals = remove_clashes(proposals)
     for elf, new_position in valid_proposals.items():
-        elves.remove(elf)
-        elves.add(new_position)
-    return elves
+        new_elves.remove(elf)
+        new_elves.add(new_position)
+    return new_elves
 
 
 def remove_clashes(proposals):
@@ -90,18 +95,4 @@ def score(elves):
         for c in range(min_coord[1], max_coord[1] + 1):
             if (r, c) not in elves:
                 num_empty += 1
-    return num_empty
-
-
-def draw_grid(elves):
-    min_coord = min(r for r, c in elves), min(c for r, c in elves)
-    max_coord = max(r for r, c in elves), max(c for r, c in elves)
-    num_empty = 0
-    for r in range(min_coord[0] - 1, max_coord[0] + 2):
-        for c in range(min_coord[1] - 1, max_coord[1] + 2):
-            if (r, c) in elves:
-                print("#", end="")
-            else:
-                print(".", end="")
-        print()
     return num_empty
