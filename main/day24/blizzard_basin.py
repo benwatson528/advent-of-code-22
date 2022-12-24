@@ -56,17 +56,13 @@ def evolve_blizzards(blizzards, previous_minute, grid_size):
 def move_coord(coord, direction, grid_size):
     match direction:
         case "^":
-            czord = (grid_size[0] - 1, coord[1]) if coord[0] - 1 == 0 else (coord[0] - 1, coord[1])
-            return czord
+            return (grid_size[0] - 1, coord[1]) if coord[0] - 1 == 0 else (coord[0] - 1, coord[1])
         case "v":
-            czord = (1, coord[1]) if coord[0] + 1 == grid_size[0] else (coord[0] + 1, coord[1])
-            return czord
+            return (1, coord[1]) if coord[0] + 1 == grid_size[0] else (coord[0] + 1, coord[1])
         case "<":
-            czord = (coord[0], grid_size[1] - 2) if coord[1] - 1 == 0 else (coord[0], coord[1] - 1)
-            return czord
+            return (coord[0], grid_size[1] - 2) if coord[1] - 1 == 0 else (coord[0], coord[1] - 1)
         case ">":
-            czord = (coord[0], 1) if coord[1] + 1 == grid_size[1] - 1 else (coord[0], coord[1] + 1)
-            return czord
+            return (coord[0], 1) if coord[1] + 1 == grid_size[1] - 1 else (coord[0], coord[1] + 1)
 
 
 def get_next_moves(current_position, start, end, grid_height, grid_width):
