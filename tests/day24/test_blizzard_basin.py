@@ -5,14 +5,24 @@ from pathlib import Path
 from main.day24.blizzard_basin import solve
 
 
-def test_simple():
+def test_one_visit_simple():
     start, end, blizzards = read_input("data/test_input.txt")
-    assert solve(start, end, blizzards) == 18
+    assert solve(start, end, blizzards, False) == 18
 
 
-def test_real():
+def test_one_visit_real():
     start, end, blizzards = read_input("data/input.txt")
-    assert solve(start, end, blizzards) == 326
+    assert solve(start, end, blizzards, False) == 326
+
+
+def test_return_simple():
+    start, end, blizzards = read_input("data/test_input.txt")
+    assert solve(start, end, blizzards, True) == 54
+
+
+def test_return_real():
+    start, end, blizzards = read_input("data/input.txt")
+    assert solve(start, end, blizzards, True) == 976
 
 
 def read_input(file_name):

@@ -4,11 +4,11 @@ from pathlib import Path
 from main.day{day:02d}.{puzzle_name} import solve
 
 
-def test_simple():
+def test_p1_simple():
     assert solve(read_input("data/test_input.txt")) == 0
 
 
-def test_real():
+def test_p1_real():
     assert solve(read_input("data/input.txt")) == 0
 
 

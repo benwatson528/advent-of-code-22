@@ -1,16 +1,20 @@
 from collections import deque
-from functools import cmp_to_key
 
 
-def solve(start, end, blizzards) -> int:
-    return dfs(start, end, blizzards)
+def solve(start, end, blizzards, forgot_snacks) -> int:
+    if forgot_snacks:
+        journey_1 = dfs(start, end, blizzards, 0)
+        journey_2 = dfs(end, start, blizzards, journey_1)
+        return dfs(start, end, blizzards, journey_2)
+    else:
+        return dfs(start, end, blizzards, 0)
 
 
-def dfs(start, end, blizzards):
-    grid_height, grid_width = end[0], end[1] + 2
+def dfs(start, end, blizzards, start_minute):
+    grid_height, grid_width = max(start[0], end[0]), max(start[1], end[1]) + 2
     to_visit = deque()
-    to_visit.append((start, 0))
-    fastest_exit = 861
+    to_visit.append((start, start_minute))
+    fastest_exit = 9999
     dead_ends = set()
     i = 0
     while to_visit:
@@ -26,7 +30,8 @@ def dfs(start, end, blizzards):
         if is_in_blizzard(current_position, current_minute, blizzards, (grid_height, grid_width)):
             dead_ends.add((current_position, current_minute))
             continue
-        for next_position in get_next_moves(current_position, start, end, grid_height, grid_width):
+        next_moves = get_next_moves(current_position, start, end, grid_height, grid_width)
+        for next_position in next_moves:
             to_visit.append((next_position, current_minute + 1))
         if i % 100 == 0:
             to_visit = deque(dict.fromkeys(to_visit))
@@ -75,9 +80,7 @@ def get_next_moves(current_position, start, end, grid_height, grid_width):
 
 
 def is_valid_move(position, start, end, grid_height, grid_width):
-    if position == end:
-        return True
-    if position == start:
+    if position == end or position == start:
         return True
     if 0 < position[0] < grid_height and 0 < position[1] < grid_width - 1:
         return True
