@@ -6,8 +6,7 @@ DECIMAL_TO_SNAFU_MAPPING = {str(v): k for k, v in SNAFU_TO_DECIMAL_MAPPING.items
 
 def solve(snafu_numbers) -> str:
     decimal = sum(map(snafu_to_decimal, snafu_numbers))
-    snafu = decimal_to_snafu(decimal)
-    return snafu
+    return decimal_to_snafu(decimal)
 
 
 def snafu_to_decimal(snafu_number):
